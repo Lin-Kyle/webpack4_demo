@@ -33,10 +33,6 @@ module.exports = {
         use: ["file-loader"]
       },
       {
-        test: /\.(csv|tsv)$/, // 文件处理
-        use: ["csv-loader"]
-      },
-      {
         test: /\.xml$/, // 文件处理
         use: ["xml-loader"]
       },
