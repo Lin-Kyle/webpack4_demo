@@ -8,5 +8,15 @@
     ],
     "react"
   ],
-  "plugins": ["react-hot-loader/babel"]
+  "plugins": [
+    "react-hot-loader/babel",
+    [
+      "import",
+      {
+        "libraryName": "antd", // 引入库名称
+        "libraryDirectory": "lib", // 来源,default: lib
+        "style": true // 全部,or 按需'css'
+      }
+    ]
+  ]
 }
