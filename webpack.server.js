@@ -41,6 +41,6 @@ module.exports = merge(common, {
     // 热替换模块
     new webpack.HotModuleReplacementPlugin(),
     // 性能可视化
-    // new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin()
   ]
 });
