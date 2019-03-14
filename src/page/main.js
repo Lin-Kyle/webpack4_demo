@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { Switch, Route, Redirect, Link } from "react-router-dom";
-import View1 from "../component/view1";
-import View2 from "../component/view2";
-import "../style/style.scss";
-
-export default class Main extends Component {
+import { hot } from "react-hot-loader";
+import View1 from "CMT/view1";
+import View2 from "CMT/view2";
+import "STYLE/style.scss";
+class Main extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -28,3 +28,5 @@ export default class Main extends Component {
     );
   }
 }
+
+export default hot(module)(Main);
