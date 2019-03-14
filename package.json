@@ -4,9 +4,9 @@
     "*.css"
   ],
   "scripts": {
-    "dev": "webpack --config ./config/webpack.dev.js",
-    "prod": "webpack --config ./config/webpack.prod.js",
-    "server": "webpack-dev-server --config ./config/webpack.server.js"
+    "dev": "cross-env NODE_ENV=DEV webpack --config ./config/webpack.dev.js",
+    "prod": "cross-env NODE_ENV=PROD webpack --config ./config/webpack.prod.js",
+    "server": "cross-env NODE_ENV=SERVER webpack-dev-server --config ./config/webpack.server.js"
   },
   "dependencies": {
     "autoprefixer": "^9.4.10",

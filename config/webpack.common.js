@@ -24,8 +24,8 @@ module.exports = {
     // 清除文件
     new CleanWebpackPlugin({
       dangerouslyAllowCleanPatternsOutsideProject: true,
-      cleanOnceBeforeBuildPatterns: ["../dist"],
-      dry: true
+      cleanOnceBeforeBuildPatterns: ["../dist/**"],
+      dry: false
     }),
     // 提取样式文件
     new MiniCssExtractPlugin({
