@@ -1,7 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
-import Main from "./page/main";
+import Main from "PAGE/main";
+import "../index.html";
 
 ReactDOM.render(
   <HashRouter>

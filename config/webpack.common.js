@@ -7,7 +7,7 @@ const path = require("path"),
 
 module.exports = {
   // 入口
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   // 输出
   output: {
     // 打包文件名
@@ -48,6 +48,8 @@ module.exports = {
     })
   ],
   resolve: {
+    // Add '.ts' and '.tsx' as resolvable extensions.
+    extensions: [".ts", ".tsx", ".js", ".json"],
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
     alias
   }

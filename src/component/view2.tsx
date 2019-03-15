@@ -3,8 +3,8 @@ import React, { Fragment } from "react";
 export default () => {
   return (
     <Fragment>
-      <p>Page1</p>
-      <img className="img1" src={require("../img/1.jpg")} alt="" />
+      <p>Page2</p>
+      <div className="img2" />
     </Fragment>
   );
 };

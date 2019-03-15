@@ -1,12 +1,34 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const tsImportPluginFactory = require("ts-import-plugin");
 
 module.exports = [
   {
     test: /\.(js|jsx)$/, // 匹配文件
+    use: ["source-map-loader"],
+    enforce: "pre",
     exclude: /node_modules/, // 过滤文件夹
     use: {
       loader: "babel-loader"
     }
+  },
+  // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+  {
+    test: /\.tsx?$/,
+    loader: "awesome-typescript-loader",
+    options: {
+      useCache: true,
+      useBabel: false, // !important!
+      getCustomTransformers: () => ({
+        before: [
+          tsImportPluginFactory({
+            libraryName: "antd",
+            libraryDirectory: "lib",
+            style: true
+          })
+        ]
+      })
+    },
+    exclude: [/node_modules\/mutationobserver-shim/g]
   },
   {
     test: /\.s?css$/, // 匹配文件
