@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
 import Main from "PAGE/main";
 import "../index.html";
-
+console.log(1234)
 ReactDOM.render(
   <HashRouter>
     <Main />

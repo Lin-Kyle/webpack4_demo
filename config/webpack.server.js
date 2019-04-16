@@ -44,14 +44,17 @@ module.exports = merge(common, {
         }
       }
     },
+    // Shows a full-screen overlay in the browser when there are compiler errors or warnings. Disabled by default. If you want to show only compiler errors:
     overlay: { warnings: false, errors: true },
     /* 惰性模式 将不监视文件改动，不想使用自动刷新功能时可设置为true */
     lazy: false,
     /* 静默模式，减少不必要的信息输出 necessary for FriendlyErrorsPlugin */
     quiet: false,
     watchOptions: {
+      // Turn on polling by passing true, or specifying a poll interval in milliseconds:
       poll: false
     },
+    // 同stats
     stats: {
       builtAt: true,
       colors: true,

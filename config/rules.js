@@ -40,10 +40,14 @@ module.exports = [
     test: /\.tsx?$/,
     loader: "awesome-typescript-loader",
     options: {
+      // 利用缓存
       useCache: true,
+      // 禁止babel
       useBabel: false, // !important!
+      // 提供自定义转换
       getCustomTransformers: () => ({
         before: [
+          // ts按需加载库
           tsImportPluginFactory({
             libraryName: "antd",
             libraryDirectory: "lib",
