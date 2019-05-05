@@ -21,28 +21,12 @@ module.exports = merge(common, {
     port: 9000,
     // 是否开启热替换功能
     // hot: true,
-    host: 'localhost',
+    host: '0.0.0.0',
     // 是否自动打开页面,可以传入指定浏览器名字打开
     open: false,
     // 是否开启部分热替换功能
     hotOnly: true,
     proxy: {
-      '/mizhuakey': {
-        target: 'http://alpha.mizhua.net', // http://alpha.mizhua.net/dev/login.html?flash=true&name=test
-        changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/mizhuakey': ''
-        }
-      },
-      '/xiaohuxikey': {
-        target: 'http://alpha2.xiaohuxi.cn', // http://alpha2.xiaohuxi.cn/dev/login.html?flash=true&name=test
-        changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/xiaohuxikey': ''
-        }
-      }
     },
     // Shows a full-screen overlay in the browser when there are compiler errors or warnings. Disabled by default. If you want to show only compiler errors:
     overlay: { warnings: false, errors: true },
