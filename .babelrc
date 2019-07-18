@@ -1,14 +1,29 @@
 {
+  // 预设
   "presets": [
     [
       "env",
       {
-        "modules": false
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 7"
+          ]
+        },
+        "useBuiltIns": "usage" // "usage" | "entry" | false, 默认为 false
       }
     ],
-    "react"
+    "stage-2"
   ],
-  "plugins": [
-    "react-hot-loader/babel"
-  ]
+  // 插件
+  "plugins": [],
+  /* 
+    设置特定的配置选项
+    env 选项的值将从 process.env.BABEL_ENV 获取，如果没有的话，则获取 process.env.NODE_ENV 的值，它也无法获取时会设置为 "development" 
+  */
+  "env": {
+    "development": {},
+    "production": {}
+  }
 }

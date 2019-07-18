@@ -1,10 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const tsImportPluginFactory = require("ts-import-plugin");
 const {
-  isProd, isServer, entry,
-  outputName,
-  outputPath,
-  publicPath, title
+  isProd, isServer
 } = require('./env')
 
 const cssMiniLoader = !isServer
@@ -17,6 +13,7 @@ const cssMiniLoader = !isServer
     }
   }
   : "style-loader"; // 使用<style>将css-loader内部样式注入到我们的HTML页面,
+
 const postcssLoader = {
   loader: "postcss-loader",
   options: {
@@ -25,6 +22,7 @@ const postcssLoader = {
     }
   }
 };
+
 const imgLoader = {
   loader: "url-loader",
   options: {
@@ -34,99 +32,69 @@ const imgLoader = {
   }
 };
 
-module.exports = [
-  // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-  {
-    test: /\.tsx?$/,
-    loader: "awesome-typescript-loader",
-    options: {
-      // 利用缓存
-      useCache: true,
-      // 禁止babel
-      useBabel: false, // !important!
-      // 提供自定义转换
-      getCustomTransformers: () => ({
-        before: [
-          // ts按需加载库
-          tsImportPluginFactory({
-            libraryName: "antd",
-            libraryDirectory: "lib",
-            style: true
-          })
-        ]
-      })
-    },
-    exclude: [/node_modules\/mutationobserver-shim/g]
-  },
-  {
-    test: /\.s?css$/, // 匹配文件
-    use: [
-      cssMiniLoader,
-      "css-loader", // 加载.css文件将其转换为JS模块
-      postcssLoader,
-      "sass-loader" // 加载 SASS / SCSS 文件并将其编译为 CSS
-    ]
-  },
-  {
-    test: /antd.*\.less$/, // 匹配文件
-    use: [
-      cssMiniLoader,
-      "css-loader", // 加载.css文件将其转换为JS模块
-      postcssLoader,
-      {
-        loader: "less-loader",
-        options: {
-          javascriptEnabled: true // 是否处理js内样式
-        }
-      }
-    ]
-  },
-  {
-    test: /\.(png|svg|jpe?g|gif)$/i, // 图片处理
-    use:
-      isProd
-        ? [
-          imgLoader,
-          {
-            loader: "image-webpack-loader",
-            options: {
-              // Compress JPEG images
-              mozjpeg: {
-                progressive: true,
-                quality: 65
-              },
-              // Compress PNG images
-              optipng: {
-                enabled: false
-              },
-              //  Compress PNG images
-              pngquant: {
-                quality: "65-90",
-                speed: 4
-              },
-              // Compress GIF images
-              gifsicle: {
-                interlaced: false
-              }
+module.exports = [{
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: {
+    loader: 'babel-loader'
+  }
+},
+{ test: /\.vue$/, use: 'vue-loader' },
+{
+  test: /\.s?css$/, // 匹配文件
+  use: [
+    cssMiniLoader,
+    "css-loader", // 加载.css文件将其转换为JS模块
+    postcssLoader,
+    "sass-loader" // 加载 SASS / SCSS 文件并将其编译为 CSS
+  ]
+},
+{
+  test: /\.(png|svg|jpe?g|gif)$/i, // 图片处理
+  use:
+    isProd
+      ? [
+        imgLoader,
+        {
+          loader: "image-webpack-loader",
+          options: {
+            // Compress JPEG images
+            mozjpeg: {
+              progressive: true,
+              quality: 65
+            },
+            // Compress PNG images
+            optipng: {
+              enabled: false
+            },
+            //  Compress PNG images
+            pngquant: {
+              quality: "65-90",
+              speed: 4
+            },
+            // Compress GIF images
+            gifsicle: {
+              interlaced: false
             }
           }
-        ]
-        : [
-          imgLoader
-        ]
-  },
-  {
-    test: /\.(woff|woff2|eot|ttf|otf)$/, // 字体处理
-    use: ["file-loader"]
-  },
-  {
-    test: /\.xml$/, // 文件处理
-    use: ["xml-loader"]
-  },
-  {
-    test: /\.(html)$/,
-    use: {
-      loader: "html-loader"
-    }
+        }
+      ]
+      : [
+        imgLoader
+      ]
+},
+{
+  test: /\.(woff|woff2|eot|ttf|otf)$/, // 字体处理
+  use: ["file-loader"]
+},
+{
+  test: /\.xml$/, // 文件处理
+  use: ["xml-loader"]
+},
+{
+  test: /\.(html)$/,
+  use: {
+    loader: "html-loader"
   }
+}
 ];

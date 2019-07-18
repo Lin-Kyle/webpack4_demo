@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin"),
   CleanWebpackPlugin = require("clean-webpack-plugin"),
+  VueLoaderPlugin = require('vue-loader/lib/plugin'),
   MiniCssExtractPlugin = require("mini-css-extract-plugin"),
   ProgressBarPlugin = require('progress-bar-webpack-plugin'),
   webpack = require('webpack'),
@@ -35,6 +36,7 @@ module.exports = {
   plugins: [
     // 清除文件
     new CleanWebpackPlugin(),
+    new VueLoaderPlugin(),
     // 进度条展示
     new ProgressBarPlugin(),
     // 该插件帮助我们安心地使用环境变量
@@ -62,8 +64,7 @@ module.exports = {
     })
   ],
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"],
+    extensions: ['.js', '.vue', '.json', 'scss', 'css'],
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
     alias
   }

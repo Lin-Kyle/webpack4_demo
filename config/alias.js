@@ -7,6 +7,8 @@ module.exports = {
   STYLE: path.resolve(__dirname, "../src/style"),
   JS: path.resolve(__dirname, "../src/js"),
   ROUTER: path.resolve(__dirname, "../src/router"),
+  VUEX: path.resolve(__dirname, "../src/vuex"),
   PAGE: path.resolve(__dirname, "../src/page"),
-  CMT: path.resolve(__dirname, "../src/component")
+  CMT: path.resolve(__dirname, "../src/component"),
+  // 'vue$':'vue/dist/vue.js'
 };
