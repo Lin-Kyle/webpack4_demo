@@ -4,8 +4,13 @@
 
 ## 系列文章
 [webpack4从零开始构建(一)](https://segmentfault.com/a/1190000019980649)
+
 [webpack4+React16项目构建(二)](https://segmentfault.com/a/1190000019983101)
+
 [webpack4功能配置划分细化(三)](https://segmentfault.com/a/1190000019983178)
+
 [webpack4引入Ant Design和Typescript(四)](https://segmentfault.com/a/1190000019983303)
+
 [webpack4 代码去重,简化信息和构建优化(五)](https://segmentfault.com/a/1190000019983472)
+
 [webpack4配置Vue版脚手架(六)](https://segmentfault.com/a/1190000019984328)
